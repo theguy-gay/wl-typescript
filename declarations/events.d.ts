@@ -12,7 +12,7 @@ declare function wl_add_event_to_dispatcher(
   sandboxObject: WildLife.SandboxObject,
   dispatcherID: string,
   eventName: string,
-  eventValue: string,
+  eventValue: string
 ): void;
 
 /**
@@ -25,7 +25,7 @@ declare function wl_add_event_to_receiver(
   sandboxObject: WildLife.SandboxObject,
   receiverID: string,
   eventName: string,
-  eventValue: string,
+  eventValue: string
 ): void;
 
 /**
@@ -44,15 +44,104 @@ declare function wl_dispatch_event(eventName: string, eventValue: string): void;
 declare function wl_dispatch_event_to_object(
   eventName: string,
   eventValue: string,
-  sandboxObject: WildLife.SandboxObject,
+  sandboxObject: WildLife.SandboxObject
 ): void;
+
+/**
+ * Will add a listener on a specific event 'eventName' and calls the given
+ * 'luaFunctionString' function with the parameter which the event dispatched
+ * with. Adding the same event to the same function multiple times will be
+ * ignored. Returns true if successful, otherwise false.
+ */
+declare function wl_event_system_add_listener(
+  eventName: string,
+  luaFunctionString: string
+): boolean;
+
+/**
+ * Will remove a listener from a specific event 'eventName' which points to
+ * 'luaFunctionString'. If no listener exists, nothing will happen. Returns true
+ * if successful, otherwise false.
+ */
+declare function wl_event_system_remove_listener(
+  eventName: string,
+  luaFunctionString: string
+): boolean;
+
+/**
+ * Directly executes the dispatcher with the given 'dispatcherID' without the
+ * need of an event name. 'eventValue' will be used as the parameter.
+ */
+declare function wl_execute_object_event_dispatcher(
+  sandboxObject: WildLife.SandboxObject,
+  dispatcherID: string,
+  eventValue: string
+): boolean;
+
+/**
+ * Directly executes the receiver with the given 'receiverID' without the need
+ * of an event name. 'eventValue' will be used as the parameter.
+ */
+declare function wl_execute_object_event_receiver(
+  sandboxObject: WildLife.SandboxObject,
+  receiverID: string,
+  eventValue: string
+): boolean;
+
+/**
+ * Returns the last argument/parameter that was used to execute this code as a
+ * bool (Execute event parameter or Test Code Button Parameter). This function
+ * will try to convert the parameter into a bool, if it fails, it will return
+ * false.
+ */
+declare function wl_get_call_argument_as_bool(): boolean;
+
+/**
+ * Returns the last argument/parameter that was used to execute this code as a
+ * color (Execute event parameter or Test Code Button Parameter). This function
+ * will try to convert the parameter into a color, if it fails, it will return
+ * black with full opacity.
+ */
+declare function wl_get_call_argument_as_color(): WildLife.Color;
+
+/**
+ * Returns the last argument/parameter that was used to execute this code as a
+ * float (Execute event parameter or Test Code Button Parameter). This function
+ * will try to convert the parameter into a float, if it fails, it will return
+ * 0.
+ */
+declare function wl_get_call_argument_as_float(): number;
+
+/**
+ * Returns the last argument/parameter that was used to execute this code as an
+ * integer (Execute event parameter or Test Code Button Parameter). This
+ * function will try to convert the parameter into an integer, if it fails, it
+ * will return 0.
+ */
+declare function wl_get_call_argument_as_integer(): number;
+
+/**
+ * Returns the last argument/parameter that was used to execute this code as a
+ * string (Execute event parameter or Test Code Button Parameter). Since event
+ * parameters are always passed around as strings, this is the most 'accurate'
+ * value.
+ */
+declare function wl_get_call_argument_as_string(): string;
+
+/**
+ * Returns the last argument/parameter that was used to execute this code as a
+ * vector (Execute event parameter or Test Code Button Parameter). This function
+ * will try to convert the parameter into a vector, if it fails, it will return
+ * a zero vector.
+ */
+declare function wl_get_call_argument_as_vector(): WildLife.Vector;
 
 /**
  * Returns whether the given 'sandboxObject' has it's event dispatchers enabled
  * or not.
  */
 declare function wl_get_object_dispatchers_enabled(
-  sandboxObject: WildLife.SandboxObject,
+  sandboxObject: WildLife.SandboxObject
 ): boolean;
 
 /**
@@ -60,7 +149,7 @@ declare function wl_get_object_dispatchers_enabled(
  * not.
  */
 declare function wl_get_object_receivers_enabled(
-  sandboxObject: WildLife.SandboxObject,
+  sandboxObject: WildLife.SandboxObject
 ): boolean;
 
 /**
@@ -72,7 +161,7 @@ declare function wl_get_object_receivers_enabled(
 declare function wl_remove_event_from_dispatcher(
   sandboxObject: WildLife.SandboxObject,
   dispatcherID: string,
-  eventName: string,
+  eventName: string
 ): void;
 
 /**
@@ -84,7 +173,7 @@ declare function wl_remove_event_from_dispatcher(
 declare function wl_remove_event_from_receiver(
   sandboxObject: WildLife.SandboxObject,
   receiverID: string,
-  eventName: string,
+  eventName: string
 ): void;
 
 /**
@@ -93,7 +182,7 @@ declare function wl_remove_event_from_receiver(
  */
 declare function wl_set_object_dispatchers_enabled(
   sandboxObject: WildLife.SandboxObject,
-  newEnabled: boolean,
+  newEnabled: boolean
 ): void;
 
 /**
@@ -102,5 +191,5 @@ declare function wl_set_object_dispatchers_enabled(
  */
 declare function wl_set_object_receivers_enabled(
   sandboxObject: WildLife.SandboxObject,
-  newEnabled: boolean,
+  newEnabled: boolean
 ): void;
