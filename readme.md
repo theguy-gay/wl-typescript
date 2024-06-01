@@ -57,6 +57,7 @@ Create a `tsconfig.json`:
       "luaTarget": "5.3",
       "noImplicitSelf": true,
       "tstlVerbose": true,
+      "luaLibImport": "inline",
       "luaBundle": "bundle.lua",
       "luaBundleEntry": "src/index.ts",
     },
@@ -84,3 +85,9 @@ Automation -> Lua -> Code
 ```
 
 Now whenever that object is run, your code should be executed.
+
+### Caveats
+
+Wild Life does not support Lua Metatables. This leads to some limitations:
+* You cannot use classes in TypeScript. These are implemented in TypeScriptToLua via metatables.
+* In your tstl section of tsconfig.json you must set luaLibImport to "none" to guarantee it does not generate metatable code or "inline"/"require-minimal" and avoid using code that does use metatables.
