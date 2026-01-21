@@ -36,4 +36,55 @@ declare namespace WildLife {
     distance: number;
     hit_sandbox_object: SandboxObject;
   };
+
+  type BoneControl = {
+    control_object: SandboxObject | null;
+    alpha: number;
+    position_offset: Vector;
+    rotation_offset: Vector;
+    scale_offset: Vector;
+    control_child_bones: boolean;
+    bone_name: string;
+  };
+
+  type Material = object;
+
+  type SexToy = object;
+
+  type KeyframeData = {
+    value: number | boolean | string | Color | Vector;
+    in_tangent: number;
+    out_tangent: number;
+    tangent_mode: string;
+    in_tangent_type: string;
+    out_tangent_type: string;
+    time: number;
+  };
+
+  type ObjectTrackData = {
+    guid: string;
+    group_name: string;
+  };
+
+  type KeyframeTrackData = {
+    type: string;
+    tag: string;
+  };
+
+  type ObjectTrack = {
+    guid: string;
+    group_name: string;
+    sub_tracks: Table;
+  };
+
+  type KeyframeTrack = {
+    type: string;
+    tag: string;
+    num_tracks: number;
+  };
+
+  type EventData = {
+    event_name: string;
+    event_value: string;
+  };
 }

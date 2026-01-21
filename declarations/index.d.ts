@@ -1,10 +1,20 @@
 import "./types";
 
+import "./animation";
+import "./character";
 import "./data";
+import "./editor";
 import "./events";
 import "./hierarchy";
 import "./make";
+import "./material";
 import "./misc";
 import "./objectData";
 import "./options";
+import "./pose";
 import "./print";
+import "./rotation";
+import "./sexScene";
+import "./sexToys";
+import "./transform";
+import "./vector";
